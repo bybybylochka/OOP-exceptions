@@ -1,5 +1,6 @@
 #include "IdentityData.h"
 #include<iostream>
+#include"Employee.h"
 using namespace std;
 
 IdentityData::IdentityData()
@@ -17,7 +18,7 @@ void IdentityData::set_gender(Gender gender)
 {
 	this->gender = gender;
 };
-void IdentityData:: set_age(int age)
+void IdentityData::set_age(int age)
 {
 	this->age = age;
 };
@@ -38,16 +39,13 @@ void IdentityData::create_identity_data()
 	cout << "  Введите фамилию сотрудника:  ";
 	set_FIO(check_string());
 	cout << "  Введите пол сотрудника(0-мужской, 1-женский):  ";
-	if (check_range(0, 1) == 0)
-		set_gender(male);
-	else
-		set_gender(female);
+	check_range(0, 1) == 0 ? set_gender(male) : set_gender(female);
 	cout << "  Введите возраст сотрудника:  ";
 	set_age(check_range(18, 60));
 }
 void IdentityData::print_identity_data()
 {
-
+	
 }
 string check_string()
 {
@@ -71,14 +69,14 @@ string check_string()
 			}
 
 		}
-		if (flag == 1)
-		{
-			cout << "  Ошибка ввода! Попробуйте еще раз:  ";
-		}
-		else
-		{
-			return FIO;
+		try {
+			if (flag == 1)
+				throw 1;
+			return FIO; 
 			break;
+		}
+		catch (int) {
+			cout << "  Ошибка ввода! Попробуйте еще раз:  ";
 		}
 	}
 }
@@ -88,18 +86,19 @@ int check_range(int bottom, int top)
 	int range;
 	while (1)
 	{
-		cin >> range;
-		if (cin.fail() || range<bottom || range>top)
+		try
+		{
+			cin >> range;
+			if (cin.fail() || range<bottom || range>top)
+				throw index_out_of_range("Ошибка ввода, попробуйте еще раз: ");
+			cin.ignore(32767, '\n');
+			return range;
+		}
+		catch (index_out_of_range e)
 		{
 			cin.clear();
 			cin.ignore(32767, '\n');
-			cout << "  Ошибка ввода! Попробуйте еще раз:  ";
-		}
-		else
-		{
-			cin.ignore(32767, '\n');
-			return range;
-			break;
+			cout << e.what() << endl;
 		}
 	}
 }

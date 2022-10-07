@@ -8,17 +8,30 @@ enum employeeTypes
 	_operator
 };
 
+enum Genre {
+	sport,
+	news,
+	weather
+};
+
 class TVChannelEmployee
 {
 	static string place_of_work;
 	IdentityData identity_data;
 public:
 	TVChannelEmployee();
+	TVChannelEmployee(IdentityData identity_data);
 	~TVChannelEmployee();
+	void print_data();
 	virtual void create_data();
-	virtual void print_data();
+	IdentityData get_identity_data();
 	virtual employeeTypes type_checker();
-	virtual Genre gen_genre() { cout << endl; }
+	virtual string get_type_name(employeeTypes type);
+	///
+	virtual Genre get_genre();
+	virtual bool get_ability_to_improvise();
+	virtual bool get_ability_to_dynamic_shooting();
+	///
 };
 
 

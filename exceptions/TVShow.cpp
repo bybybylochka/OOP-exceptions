@@ -1,8 +1,14 @@
-#include "TVShow.h"
+ #include "TVShow.h"
 #include<iostream>
+#include<iomanip>
 using namespace std;
 
 TVShow::TVShow()
+{
+	this->name = "no data";
+	this->genre = sport;
+}
+TVShow::TVShow(Employee employee)
 {
 	this->name = "no data";
 	this->genre = sport;
@@ -51,12 +57,50 @@ void TVShow::create_TVShow()
 		set_genre(weather);
 		break;
 	}
+	cout << "  Введите желаемый пол для телеведущего(0-мужской,1-женский):  ";
+	Gender temp_gen;
+	check_range(0, 1) == 0 ? temp_gen = male : temp_gen = female;
+	cout << "  Должен ли телеведущий иметь навык импровизации(0-нет, 1-да):  ";
+	bool temp_imp;
+	check_range(0, 1) == 0 ? temp_imp = false : temp_imp = true;
+	cout << "  Должен ли оператор обладать навыком динамической съемки(0-нет, 1-да):  ";
+	bool temp_shooting = false;
+	check_range(0, 1) == 0 ? temp_shooting == false : temp_shooting == true;
 	try {
 		team.push_back(employee.get_StageManager(get_genre()));
-		team.push_back(employee.get_StageManager(get_genre()));
+		team.push_back(employee.get_Editor(get_genre()));
+		team.push_back(employee.get_Anchorman(temp_imp, temp_gen));
+		team.push_back(employee.get_Operator(temp_shooting));
 	}
-	catch (no_such_object err) {
-		err.what();
+	catch (no_such_object err) 
+	{
+		cout << err << endl;
+	}
+	catch (no_such_object* err) 
+	{
+		cout << err << endl;
+	}
+	catch (const char* message)
+	{
+		cout << message << endl;
 	}
 }
-void TVShow::print_TVShow();
+void TVShow::print_TVShow()
+{
+	if (team.size() < 4) throw 1;
+	cout << "  ИНФОРМАЦИЯ О ТЕЛЕПЕРЕДАЧЕ  " << endl;
+	cout << "  Название телепередачи:  " << get_name() << endl;
+	cout << "  Жанр телепередачи:  " << get_genre() << endl;
+	cout << "  Съемочная команда:  " << endl;
+	cout << "____________________________________________"<<endl<<endl;
+	cout << "|  Должность  |            ФИО             |" << endl;
+	cout << "____________________________________________" << endl;
+	cout << setw(14) << "Режисер" << setw(30)<<team[0]->get_identity_data().get_FIO() << endl;
+	cout << "____________________________________________" << endl;
+	cout << setw(14) << "Редактор" << setw(30) << team[1]->get_identity_data().get_FIO() << endl;
+	cout << "____________________________________________" << endl;
+	cout << setw(14) << "Ведущий" << setw(30) << team[2]->get_identity_data().get_FIO() << endl;
+	cout << "____________________________________________" << endl;
+	cout << setw(14) << "Оператор" << setw(30) << team[3]->get_identity_data().get_FIO() << endl;
+	cout << "____________________________________________" << endl;
+}

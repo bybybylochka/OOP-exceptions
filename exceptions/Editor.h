@@ -7,10 +7,11 @@ class Editor : public TVChannelEmployee
 	Genre genre;
 public:
 	Editor();
+	Editor(IdentityData identityData);
 	~Editor();
 	void set_genre(Genre);
 	Genre get_genre();
 	void create_data();
-	void print_data();
+	/*void print_data();*/
 };
 
