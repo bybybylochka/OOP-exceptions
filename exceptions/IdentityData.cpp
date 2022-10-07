@@ -47,7 +47,7 @@ void IdentityData::create_identity_data()
 }
 void IdentityData::print_identity_data()
 {
-
+	
 }
 string check_string()
 {
@@ -88,18 +88,19 @@ int check_range(int bottom, int top)
 	int range;
 	while (1)
 	{
-		cin >> range;
-		if (cin.fail() || range<bottom || range>top)
+		try
+		{
+			cin >> range;
+			if (cin.fail() || range<bottom || range>top)
+				throw out_of_range("  Ошибка ввода! Попробуйте еще раз:");
+			cin.ignore(32767, '\n');
+			return range;
+		}
+		catch (out_of_range e)
 		{
 			cin.clear();
 			cin.ignore(32767, '\n');
-			cout << "  Ошибка ввода! Попробуйте еще раз:  ";
-		}
-		else
-		{
-			cin.ignore(32767, '\n');
-			return range;
-			break;
+			e.what();
 		}
 	}
 }
