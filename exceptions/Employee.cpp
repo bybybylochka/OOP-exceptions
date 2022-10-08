@@ -11,7 +11,7 @@ TVChannelEmployee* Employee::get_StageManager(Genre genre)
 				return employees[i];
 			}
 		}
-	throw no_such_object("Не найден режиссер, подходящий под условия!");
+	throw no_such_object("ГЌГҐ Г­Г Г©Г¤ГҐГ­ Г°ГҐГ¦ГЁГ±Г±ГҐГ°, ГЇГ®Г¤ГµГ®Г¤ГїГ№ГЁГ© ГЇГ®Г¤ ГіГ±Г«Г®ГўГЁГї!");
 }
 TVChannelEmployee* Employee::get_Editor(Genre genre)
 {
@@ -22,7 +22,7 @@ TVChannelEmployee* Employee::get_Editor(Genre genre)
 			return employees[i];
 		}
 	}
-	throw new no_such_object("Не найден редактор, подходящий под условия!");
+	throw new no_such_object("ГЌГҐ Г­Г Г©Г¤ГҐГ­ Г°ГҐГ¤Г ГЄГІГ®Г°, ГЇГ®Г¤ГµГ®Г¤ГїГ№ГЁГ© ГЇГ®Г¤ ГіГ±Г«Г®ГўГЁГї!");
 }
 TVChannelEmployee* Employee::get_Anchorman(bool ability_to_improvise, Gender gender)
 {
@@ -34,7 +34,7 @@ TVChannelEmployee* Employee::get_Anchorman(bool ability_to_improvise, Gender gen
 			return employees[i];
 		}
 	}
-	throw no_such_object("Не найден ведущий, подходящий под условия!");
+	throw no_such_object("ГЌГҐ Г­Г Г©Г¤ГҐГ­ ГўГҐГ¤ГіГ№ГЁГ©, ГЇГ®Г¤ГµГ®Г¤ГїГ№ГЁГ© ГЇГ®Г¤ ГіГ±Г«Г®ГўГЁГї!");
 }
 TVChannelEmployee* Employee::get_Operator(bool ability_to_dynamic_shooting)
 {
@@ -47,7 +47,7 @@ TVChannelEmployee* Employee::get_Operator(bool ability_to_dynamic_shooting)
 				return employees[i];
 			}
 		}
-		throw "Не найден оператор, подходящий под условия!";
+		throw "ГЌГҐ Г­Г Г©Г¤ГҐГ­ Г®ГЇГҐГ°Г ГІГ®Г°, ГЇГ®Г¤ГµГ®Г¤ГїГ№ГЁГ© ГЇГ®Г¤ ГіГ±Г«Г®ГўГЁГї!";
 	}
 	catch (const char* message)
 	{
@@ -59,7 +59,7 @@ TVChannelEmployee* Employee::get_Operator(bool ability_to_dynamic_shooting)
 void Employee::add_employee() {
 	IdentityData temp;
 	temp.create_identity_data();
-	cout << " Укажите тип сотрудника:\n 1 - Телеведущий\n 2 - Оператор\n 3 - Режиссер\n 4 - Редактор" << endl;
+	cout << " Г“ГЄГ Г¦ГЁГІГҐ ГІГЁГЇ Г±Г®ГІГ°ГіГ¤Г­ГЁГЄГ :\n 1 - Г’ГҐГ«ГҐГўГҐГ¤ГіГ№ГЁГ©\n 2 - ГЋГЇГҐГ°Г ГІГ®Г°\n 3 - ГђГҐГ¦ГЁГ±Г±ГҐГ°\n 4 - ГђГҐГ¤Г ГЄГІГ®Г°" << endl;
 	TVChannelEmployee* employee = nullptr;
 	switch (check_range(1, 4)) 
 	{
@@ -78,9 +78,9 @@ void Employee::add_employee() {
 
 void Employee::print_employees() {
 	try {
-		if (employees.size() == 0) throw " К сожалению, данные о сотрудниках отсутствуют!";
+		if (employees.size() == 0) throw " ГЉ Г±Г®Г¦Г Г«ГҐГ­ГЁГѕ, Г¤Г Г­Г­Г»ГҐ Г® Г±Г®ГІГ°ГіГ¤Г­ГЁГЄГ Гµ Г®ГІГ±ГіГІГ±ГІГўГіГѕГІ!";
 		cout << "__________________________________________________________________" << endl;
-		cout << "|            ФИО             | Тип сотрудника | Возраст |   Пол  |" << endl;
+		cout << "|            Г”Г€ГЋ             | Г’ГЁГЇ Г±Г®ГІГ°ГіГ¤Г­ГЁГЄГ  | Г‚Г®Г§Г°Г Г±ГІ |   ГЏГ®Г«  |" << endl;
 		cout << "__________________________________________________________________" << endl;
 		for (int i = 0; i < employees.size(); i++)
 		{

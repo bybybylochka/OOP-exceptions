@@ -1,4 +1,5 @@
 #pragma once
+#include"StageManager.h"
 #include "IdentityData.h"
 enum employeeTypes
 {
@@ -31,7 +32,6 @@ public:
 	virtual Genre get_genre();
 	virtual bool get_ability_to_improvise();
 	virtual bool get_ability_to_dynamic_shooting();
-	///
 };
 
 
