@@ -6,7 +6,11 @@ Editor::Editor()
 {
 	this->genre = sport;
 }
-
+Editor::Editor(IdentityData identity_data) 
+	: TVChannelEmployee(identity_data) 
+{
+	this->genre = sport;
+}
 Editor::~Editor()
 {
 
@@ -21,7 +25,7 @@ Genre Editor::get_genre()
 }
 void Editor::create_data()
 {
-	TVChannelEmployee::create_data();
+	// TVChannelEmployee::create_data();
 	cout << "  Введите жанр, на котором специализируется редактор(1-спортивные телепередачи, 2-новости, 3-прогноз погоды):  ";
 	switch (check_range(1, 3))
 	{
@@ -36,9 +40,9 @@ void Editor::create_data()
 		break;
 	}
 }
-void Editor::print_data()
-{
-	TVChannelEmployee::print_data();
-	cout << "Жанр:";
-	cout << get_genre();
-}
+//void Editor::print_data()
+//{
+//	TVChannelEmployee::print_data();
+//	cout << "Жанр:";
+//	cout << get_genre();
+//}

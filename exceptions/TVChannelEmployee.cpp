@@ -5,22 +5,28 @@
 #include"IdentityData.h"
 #include<typeinfo>
 #include<iostream>
+#include<iomanip>
+
+string TVChannelEmployee::place_of_work;
 
 TVChannelEmployee::TVChannelEmployee()
 {
 	this->place_of_work = "News";
 }
-TVChannelEmployee::~TVChannelEmployee()
-{
-
+TVChannelEmployee::TVChannelEmployee(IdentityData identity_data) {
+	this->identity_data = identity_data;
+	this->place_of_work = "News";
 }
+TVChannelEmployee::~TVChannelEmployee() {}
 void TVChannelEmployee::create_data()
 {
 	identity_data.create_identity_data();
 }
 void TVChannelEmployee::print_data()
 {
-	identity_data.print_identity_data();
+	cout << "|"  << setw(30) << identity_data.get_FIO() << get_type_name(type_checker())
+		<< setw(10) << identity_data.get_age() << setw(10) << identity_data.get_gender() << "|" << endl;
+	// ��������
 }
 employeeTypes TVChannelEmployee::type_checker()
 {
@@ -33,17 +39,30 @@ employeeTypes TVChannelEmployee::type_checker()
 	if (typeid(*this) == typeid(Editor))
 		return editor;
 }
+string TVChannelEmployee::get_type_name(employeeTypes type) {
+	switch (type)
+	{
+	case anchorman: return "�����������";
+		break;
+	case editor: return "��������";
+		break;
+	case stage_manager: return "��������";
+		break;
+	case _operator: return "��������";
+		break;
+	}
+}
 Genre TVChannelEmployee::get_genre()
 {
-	cout << endl;
+	return news;
 }
 bool TVChannelEmployee::get_ability_to_improvise()
 {
-	cout << endl;
+	return false;
 }
 bool TVChannelEmployee::get_ability_to_dynamic_shooting()
 {
-	cout << endl;
+	return false;
 }
 IdentityData TVChannelEmployee::get_identity_data()
 {

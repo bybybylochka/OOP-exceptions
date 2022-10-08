@@ -10,6 +10,7 @@ class TVShow
 	Employee employee;
 public:
 	TVShow();
+	TVShow(Employee employee);
 	TVShow(const TVShow&);
 	~TVShow();
 	void set_name(string);

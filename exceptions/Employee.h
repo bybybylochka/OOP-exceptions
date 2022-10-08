@@ -1,10 +1,14 @@
 #pragma once
 #include<vector>
+#include<iostream>
 #include"TVChannelEmployee.h"
 #include"StageManager.h"
 #include"Editor.h"
 #include"Anchorman.h"
 #include"Operator.h"
+
+using namespace std;
+
 class Employee
 {
 	vector<TVChannelEmployee*> employees;
@@ -13,7 +17,10 @@ public:
 	TVChannelEmployee* get_Editor(Genre);
 	TVChannelEmployee* get_Anchorman(bool, Gender);
 	TVChannelEmployee* get_Operator(bool);
+	void print_employees();
+	void add_employee();
 };
+
 class no_such_object
 {
 	string message;
@@ -22,9 +29,24 @@ public:
 	{
 		this->message = mes;
 	}
-	friend ostream& operator<<(ostream& out, const no_such_object& obj)
+	friend ostream& operator<<(ostream& out, no_such_object& obj)
 	{
 		out << "  Îøèáêà: " << obj.message << endl;
 		return out;
 	}
+};
+
+class index_out_of_range : public exception
+{
+	string message;
+public:
+	index_out_of_range(string message)
+	{
+		this->message = message;
+	}
+	const char* what()
+	{
+		return message.c_str();
+	}
+
 };

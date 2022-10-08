@@ -1,9 +1,14 @@
-#include "TVShow.h"
+ #include "TVShow.h"
 #include<iostream>
 #include<iomanip>
 using namespace std;
 
 TVShow::TVShow()
+{
+	this->name = "no data";
+	this->genre = sport;
+}
+TVShow::TVShow(Employee employee)
 {
 	this->name = "no data";
 	this->genre = sport;
@@ -37,9 +42,9 @@ Genre TVShow::get_genre()
 }
 void TVShow::create_TVShow()
 {
-	cout << "  Ââåäèòå íàçâàíèå òåëåïåðåäà÷è:  ";
+	cout << "  Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã­Ã Ã§Ã¢Ã Ã­Ã¨Ã¥ Ã²Ã¥Ã«Ã¥Ã¯Ã¥Ã°Ã¥Ã¤Ã Ã·Ã¨:  ";
 	set_name(check_string());
-	cout << "  Ââåäèòå æàíð òåëåïåðåäà÷è(1-ñïîðòèâûíàÿ òåëåïåðåäà÷à, 2-íîâîñòè, 3-ïðîãíîç ïîãîäû):  ";
+	cout << "  Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã¦Ã Ã­Ã° Ã²Ã¥Ã«Ã¥Ã¯Ã¥Ã°Ã¥Ã¤Ã Ã·Ã¨(1-Ã±Ã¯Ã®Ã°Ã²Ã¨Ã¢Ã»Ã­Ã Ã¿ Ã²Ã¥Ã«Ã¥Ã¯Ã¥Ã°Ã¥Ã¤Ã Ã·Ã , 2-Ã­Ã®Ã¢Ã®Ã±Ã²Ã¨, 3-Ã¯Ã°Ã®Ã£Ã­Ã®Ã§ Ã¯Ã®Ã£Ã®Ã¤Ã»):  ";
 	switch (check_range(1, 3))
 	{
 	case 1:
@@ -52,23 +57,15 @@ void TVShow::create_TVShow()
 		set_genre(weather);
 		break;
 	}
-	cout << "  Ââåäèòå æåëàåìûé ïîë äëÿ òåëåâåäóùåãî(0-ìóæñêîé,1-æåíñêèé):  ";
+	cout << "  Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã¦Ã¥Ã«Ã Ã¥Ã¬Ã»Ã© Ã¯Ã®Ã« Ã¤Ã«Ã¿ Ã²Ã¥Ã«Ã¥Ã¢Ã¥Ã¤Ã³Ã¹Ã¥Ã£Ã®(0-Ã¬Ã³Ã¦Ã±ÃªÃ®Ã©,1-Ã¦Ã¥Ã­Ã±ÃªÃ¨Ã©):  ";
 	Gender temp_gen;
-	if (check_range(0, 1) == 0)
-		temp_gen = male;
-	else
-		temp_gen = female;
-	cout << "  Äîëæåí ëè òåëåâåäóùèé èìåòü íàâûê èìïðîâèçàöèè(0-íåò, 1-äà):  ";
+	check_range(0, 1) == 0 ? temp_gen = male : temp_gen = female;
+	cout << "  Ã„Ã®Ã«Ã¦Ã¥Ã­ Ã«Ã¨ Ã²Ã¥Ã«Ã¥Ã¢Ã¥Ã¤Ã³Ã¹Ã¨Ã© Ã¨Ã¬Ã¥Ã²Ã¼ Ã­Ã Ã¢Ã»Ãª Ã¨Ã¬Ã¯Ã°Ã®Ã¢Ã¨Ã§Ã Ã¶Ã¨Ã¨(0-Ã­Ã¥Ã², 1-Ã¤Ã ):  ";
 	bool temp_imp;
-	if (check_range(0, 1) == 0)
-		temp_imp = false;
-	else temp_imp = true;
-	cout << "  Äîëæåí ëè îïåðàòîð îáëàäàòü íàâûêîì äèíàìè÷åñêîé ñúåìêè(0-íåò, 1-äà):  ";
-	bool temp_shooting;
-	if (check_range(0, 1) == 0)
-		temp_shooting == false;
-	else
-		temp_shooting == true;
+	check_range(0, 1) == 0 ? temp_imp = false : temp_imp = true;
+	cout << "  Ã„Ã®Ã«Ã¦Ã¥Ã­ Ã«Ã¨ Ã®Ã¯Ã¥Ã°Ã Ã²Ã®Ã° Ã®Ã¡Ã«Ã Ã¤Ã Ã²Ã¼ Ã­Ã Ã¢Ã»ÃªÃ®Ã¬ Ã¤Ã¨Ã­Ã Ã¬Ã¨Ã·Ã¥Ã±ÃªÃ®Ã© Ã±ÃºÃ¥Ã¬ÃªÃ¨(0-Ã­Ã¥Ã², 1-Ã¤Ã ):  ";
+	bool temp_shooting = false;
+	check_range(0, 1) == 0 ? temp_shooting == false : temp_shooting == true;
 	try {
 		team.push_back(employee.get_StageManager(get_genre()));
 		team.push_back(employee.get_Editor(get_genre()));
@@ -85,24 +82,25 @@ void TVShow::create_TVShow()
 	}
 	catch (const char* message)
 	{
-		cout << message;
+		cout << message << endl;
 	}
 }
 void TVShow::print_TVShow()
 {
-	cout << "  ÈÍÔÎÐÌÀÖÈß Î ÒÅËÅÏÅÐÅÄÀ×Å  ";
-	cout << "  Íàçâàíèå òåëåïåðåäà÷è:  " << get_name();
-	cout << "  Æàíð òåëåïåðåäà÷è:  " << get_genre();
-	cout << "  Ñúåìî÷íàÿ êîìàíäà:  ";
+	if (team.size() < 4) throw 1;
+	cout << "  ÃˆÃÃ”ÃŽÃÃŒÃ€Ã–ÃˆÃŸ ÃŽ Ã’Ã…Ã‹Ã…ÃÃ…ÃÃ…Ã„Ã€Ã—Ã…  " << endl;
+	cout << "  ÃÃ Ã§Ã¢Ã Ã­Ã¨Ã¥ Ã²Ã¥Ã«Ã¥Ã¯Ã¥Ã°Ã¥Ã¤Ã Ã·Ã¨:  " << get_name() << endl;
+	cout << "  Ã†Ã Ã­Ã° Ã²Ã¥Ã«Ã¥Ã¯Ã¥Ã°Ã¥Ã¤Ã Ã·Ã¨:  " << get_genre() << endl;
+	cout << "  Ã‘ÃºÃ¥Ã¬Ã®Ã·Ã­Ã Ã¿ ÃªÃ®Ã¬Ã Ã­Ã¤Ã :  " << endl;
 	cout << "____________________________________________"<<endl<<endl;
-	cout << "|  Äîëæíîñòü  |            ÔÈÎ             |" << endl;
+	cout << "|  Ã„Ã®Ã«Ã¦Ã­Ã®Ã±Ã²Ã¼  |            Ã”ÃˆÃŽ             |" << endl;
 	cout << "____________________________________________" << endl;
-	cout << setw(14) << "Ðåæèñåð" << setw(30)<<team[0]->get_identity_data().get_FIO() << endl;
+	cout << setw(14) << "ÃÃ¥Ã¦Ã¨Ã±Ã¥Ã°" << setw(30)<<team[0]->get_identity_data().get_FIO() << endl;
 	cout << "____________________________________________" << endl;
-	cout << setw(14) << "Ðåäàêòîð" << setw(30) << team[1]->get_identity_data().get_FIO() << endl;
+	cout << setw(14) << "ÃÃ¥Ã¤Ã ÃªÃ²Ã®Ã°" << setw(30) << team[1]->get_identity_data().get_FIO() << endl;
 	cout << "____________________________________________" << endl;
-	cout << setw(14) << "Âåäóùèé" << setw(30) << team[2]->get_identity_data().get_FIO() << endl;
+	cout << setw(14) << "Ã‚Ã¥Ã¤Ã³Ã¹Ã¨Ã©" << setw(30) << team[2]->get_identity_data().get_FIO() << endl;
 	cout << "____________________________________________" << endl;
-	cout << setw(14) << "Îïåðàòîð" << setw(30) << team[3]->get_identity_data().get_FIO() << endl;
+	cout << setw(14) << "ÃŽÃ¯Ã¥Ã°Ã Ã²Ã®Ã°" << setw(30) << team[3]->get_identity_data().get_FIO() << endl;
 	cout << "____________________________________________" << endl;
 }

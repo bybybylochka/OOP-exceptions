@@ -1,5 +1,6 @@
 #include "IdentityData.h"
 #include<iostream>
+#include"Employee.h"
 using namespace std;
 
 IdentityData::IdentityData()
@@ -17,7 +18,7 @@ void IdentityData::set_gender(Gender gender)
 {
 	this->gender = gender;
 };
-void IdentityData:: set_age(int age)
+void IdentityData::set_age(int age)
 {
 	this->age = age;
 };
@@ -35,14 +36,11 @@ int IdentityData::get_age()
 };
 void IdentityData::create_identity_data()
 {
-	cout << "  Введите фамилию сотрудника:  ";
+	cout << "  Г‚ГўГҐГ¤ГЁГІГҐ ГґГ Г¬ГЁГ«ГЁГѕ Г±Г®ГІГ°ГіГ¤Г­ГЁГЄГ :  ";
 	set_FIO(check_string());
-	cout << "  Введите пол сотрудника(0-мужской, 1-женский):  ";
-	if (check_range(0, 1) == 0)
-		set_gender(male);
-	else
-		set_gender(female);
-	cout << "  Введите возраст сотрудника:  ";
+	cout << "  Г‚ГўГҐГ¤ГЁГІГҐ ГЇГ®Г« Г±Г®ГІГ°ГіГ¤Г­ГЁГЄГ (0-Г¬ГіГ¦Г±ГЄГ®Г©, 1-Г¦ГҐГ­Г±ГЄГЁГ©):  ";
+	check_range(0, 1) == 0 ? set_gender(male) : set_gender(female);
+	cout << "  Г‚ГўГҐГ¤ГЁГІГҐ ГўГ®Г§Г°Г Г±ГІ Г±Г®ГІГ°ГіГ¤Г­ГЁГЄГ :  ";
 	set_age(check_range(18, 60));
 }
 void IdentityData::print_identity_data()
@@ -55,7 +53,7 @@ string check_string()
 	while (1)
 	{
 		getline(cin, FIO);
-		string wrong_symbols = "!@#$%^&*()_+=?:;№{}<>,.|/0123456789";
+		string wrong_symbols = "!@#$%^&*()_+=?:;В№{}<>,.|/0123456789";
 		int flag = 0;
 
 		for (int i = 0; i < FIO.length(); i++)
@@ -71,14 +69,14 @@ string check_string()
 			}
 
 		}
-		if (flag == 1)
-		{
-			cout << "  Ошибка ввода! Попробуйте еще раз:  ";
-		}
-		else
-		{
-			return FIO;
+		try {
+			if (flag == 1)
+				throw 1;
+			return FIO; 
 			break;
+		}
+		catch (int) {
+			cout << "  ГЋГёГЁГЎГЄГ  ГўГўГ®Г¤Г ! ГЏГ®ГЇГ°Г®ГЎГіГ©ГІГҐ ГҐГ№ГҐ Г°Г Г§:  ";
 		}
 	}
 }
@@ -92,15 +90,15 @@ int check_range(int bottom, int top)
 		{
 			cin >> range;
 			if (cin.fail() || range<bottom || range>top)
-				throw out_of_range("  Ошибка ввода! Попробуйте еще раз:");
+				throw index_out_of_range("ГЋГёГЁГЎГЄГ  ГўГўГ®Г¤Г , ГЇГ®ГЇГ°Г®ГЎГіГ©ГІГҐ ГҐГ№ГҐ Г°Г Г§: ");
 			cin.ignore(32767, '\n');
 			return range;
 		}
-		catch (out_of_range e)
+		catch (index_out_of_range e)
 		{
 			cin.clear();
 			cin.ignore(32767, '\n');
-			e.what();
+			cout << e.what() << endl;
 		}
 	}
 }

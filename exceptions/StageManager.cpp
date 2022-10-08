@@ -6,7 +6,11 @@ StageManager::StageManager()
 {
 	this->genre = sport;
 }
-
+StageManager::StageManager(IdentityData identity_data) 
+	:TVChannelEmployee(identity_data)
+{
+	this->genre = sport;
+}
 StageManager::~StageManager()
 {
 
@@ -21,7 +25,7 @@ Genre StageManager::get_genre()
 }
 void StageManager::create_data()
 {
-	TVChannelEmployee::create_data();
+	//TVChannelEmployee::create_data();
 	cout << "  Введите жанр, на котором специализируется режиссер(1-спортивные телепередачи, 2-новости, 3-прогноз погоды):  ";
 	switch (check_range(1, 3))
 	{
@@ -36,9 +40,9 @@ void StageManager::create_data()
 		break;
 	}
 }
-void StageManager::print_data()
-{
-	TVChannelEmployee::print_data();
-	cout << "Жанр:";
-	cout << get_genre();
-}
+//void StageManager::print_data()
+//{
+//	TVChannelEmployee::print_data();
+//	cout << "Жанр:";
+//	cout << get_genre();
+//}
