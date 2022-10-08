@@ -11,6 +11,5 @@ public:
 	void set_ability_to_dynamic_shooting(bool);
 	bool get_ability_to_dynamic_shooting();
 	void create_data();
-	/*void print_data();*/
 };
 

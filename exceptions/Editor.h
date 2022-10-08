@@ -12,6 +12,5 @@ public:
 	void set_genre(Genre);
 	Genre get_genre();
 	void create_data();
-	/*void print_data();*/
 };
 

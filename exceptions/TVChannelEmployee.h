@@ -1,6 +1,5 @@
 #pragma once
-#include"StageManager.h"
-#include "IdentityData.h"
+#include"IdentityData.h"
 enum employeeTypes
 {
 	anchorman,

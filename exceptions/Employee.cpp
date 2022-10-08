@@ -11,7 +11,7 @@ TVChannelEmployee* Employee::get_StageManager(Genre genre)
 				return employees[i];
 			}
 		}
-	throw no_such_object("Íå íàéäåí ðåæèññåð, ïîäõîäÿùèé ïîä óñëîâèÿ!");
+	throw no_such_object("Не найден режиссер, подходящий под условия!");
 }
 TVChannelEmployee* Employee::get_Editor(Genre genre)
 {
@@ -22,7 +22,7 @@ TVChannelEmployee* Employee::get_Editor(Genre genre)
 			return employees[i];
 		}
 	}
-	throw new no_such_object("Íå íàéäåí ðåäàêòîð, ïîäõîäÿùèé ïîä óñëîâèÿ!");
+	throw new no_such_object("Не найден редактор, подходящий под условия!");
 }
 TVChannelEmployee* Employee::get_Anchorman(bool ability_to_improvise, Gender gender)
 {
@@ -34,7 +34,7 @@ TVChannelEmployee* Employee::get_Anchorman(bool ability_to_improvise, Gender gen
 			return employees[i];
 		}
 	}
-	throw no_such_object("Íå íàéäåí âåäóùèé, ïîäõîäÿùèé ïîä óñëîâèÿ!");
+	throw no_such_object("Не найден телеведущий, подходящий под условия!");
 }
 TVChannelEmployee* Employee::get_Operator(bool ability_to_dynamic_shooting)
 {
@@ -47,7 +47,7 @@ TVChannelEmployee* Employee::get_Operator(bool ability_to_dynamic_shooting)
 				return employees[i];
 			}
 		}
-		throw "Íå íàéäåí îïåðàòîð, ïîäõîäÿùèé ïîä óñëîâèÿ!";
+		throw "Не найден оператор, подходящий под условия!";
 	}
 	catch (const char* message)
 	{
@@ -59,7 +59,7 @@ TVChannelEmployee* Employee::get_Operator(bool ability_to_dynamic_shooting)
 void Employee::add_employee() {
 	IdentityData temp;
 	temp.create_identity_data();
-	cout << " Óêàæèòå òèï ñîòðóäíèêà:\n 1 - Òåëåâåäóùèé\n 2 - Îïåðàòîð\n 3 - Ðåæèññåð\n 4 - Ðåäàêòîð" << endl;
+	cout << " :\n Выберите должность сотрудника: 1 - телеведущий\n 2 - оператор\n 3 - редактор\n 4 - режиссер" << endl;
 	TVChannelEmployee* employee = nullptr;
 	switch (check_range(1, 4)) 
 	{
@@ -78,9 +78,9 @@ void Employee::add_employee() {
 
 void Employee::print_employees() {
 	try {
-		if (employees.size() == 0) throw " Ê ñîæàëåíèþ, äàííûå î ñîòðóäíèêàõ îòñóòñòâóþò!";
+		if (employees.size() == 0) throw " К сожалению, записи о сотрудниках остутствуют!";
 		cout << "__________________________________________________________________" << endl;
-		cout << "|            ÔÈÎ             | Òèï ñîòðóäíèêà | Âîçðàñò |   Ïîë  |" << endl;
+		cout << "|            ФИО             | Тип сотрудника | Возраст |   Пол  |" << endl;
 		cout << "__________________________________________________________________" << endl;
 		for (int i = 0; i < employees.size(); i++)
 		{

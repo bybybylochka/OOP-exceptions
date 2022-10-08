@@ -26,7 +26,6 @@ void TVChannelEmployee::print_data()
 {
 	cout << "|"  << setw(30) << identity_data.get_FIO() << get_type_name(type_checker())
 		<< setw(10) << identity_data.get_age() << setw(10) << identity_data.get_gender() << "|" << endl;
-	// ��������
 }
 employeeTypes TVChannelEmployee::type_checker()
 {
@@ -42,13 +41,13 @@ employeeTypes TVChannelEmployee::type_checker()
 string TVChannelEmployee::get_type_name(employeeTypes type) {
 	switch (type)
 	{
-	case anchorman: return "�����������";
+	case anchorman: return "Ведущий";
 		break;
-	case editor: return "��������";
+	case editor: return "Редактор";
 		break;
-	case stage_manager: return "��������";
+	case stage_manager: return "Режиссер";
 		break;
-	case _operator: return "��������";
+	case _operator: return "Оператор";
 		break;
 	}
 }

@@ -42,9 +42,9 @@ Genre TVShow::get_genre()
 }
 void TVShow::create_TVShow()
 {
-	cout << "  Ââåäèòå íàçâàíèå òåëåïåðåäà÷è:  ";
+	cout << "  Введите название телепередачи:  ";
 	set_name(check_string());
-	cout << "  Ââåäèòå æàíð òåëåïåðåäà÷è(1-ñïîðòèâûíàÿ òåëåïåðåäà÷à, 2-íîâîñòè, 3-ïðîãíîç ïîãîäû):  ";
+	cout << "  Введите жанр телепередачи(1-спортивная телепередача, 2-новости, 3-прогноз погоды):  ";
 	switch (check_range(1, 3))
 	{
 	case 1:
@@ -57,13 +57,13 @@ void TVShow::create_TVShow()
 		set_genre(weather);
 		break;
 	}
-	cout << "  Ââåäèòå æåëàåìûé ïîë äëÿ òåëåâåäóùåãî(0-ìóæñêîé,1-æåíñêèé):  ";
+	cout << "  Введите желаемый пол телеведущего(0-мужской,1-женский):  ";
 	Gender temp_gen;
 	check_range(0, 1) == 0 ? temp_gen = male : temp_gen = female;
-	cout << "  Äîëæåí ëè òåëåâåäóùèé èìåòü íàâûê èìïðîâèçàöèè(0-íåò, 1-äà):  ";
+	cout << "  Должен ли ведущий обладать навыком импровизации в кадре(0-нет, 1-да):  ";
 	bool temp_imp;
 	check_range(0, 1) == 0 ? temp_imp = false : temp_imp = true;
-	cout << "  Äîëæåí ëè îïåðàòîð îáëàäàòü íàâûêîì äèíàìè÷åñêîé ñúåìêè(0-íåò, 1-äà):  ";
+	cout << "  Должен ли оператор обладать навыком динамической съемки(0-нет, 1-да):  ";
 	bool temp_shooting = false;
 	check_range(0, 1) == 0 ? temp_shooting == false : temp_shooting == true;
 	try {
@@ -88,19 +88,19 @@ void TVShow::create_TVShow()
 void TVShow::print_TVShow()
 {
 	if (team.size() < 4) throw 1;
-	cout << "  ÈÍÔÎÐÌÀÖÈß Î ÒÅËÅÏÅÐÅÄÀ×Å  " << endl;
-	cout << "  Íàçâàíèå òåëåïåðåäà÷è:  " << get_name() << endl;
-	cout << "  Æàíð òåëåïåðåäà÷è:  " << get_genre() << endl;
-	cout << "  Ñúåìî÷íàÿ êîìàíäà:  " << endl;
+	cout << "  ИНФОРМАЦИЯ О ТЕЛЕПЕРЕДАЧЕ  " << endl;
+	cout << "  Название телепередачи:  " << get_name() << endl;
+	cout << "  Жанр телепередачи:  " << get_genre() << endl;
+	cout << "  Информация о команде:  " << endl;
 	cout << "____________________________________________"<<endl<<endl;
-	cout << "|  Äîëæíîñòü  |            ÔÈÎ             |" << endl;
+	cout << "|  Должность  |            ФИО             |" << endl;
 	cout << "____________________________________________" << endl;
-	cout << setw(14) << "Ðåæèñåð" << setw(30)<<team[0]->get_identity_data().get_FIO() << endl;
+	cout << setw(14) << "Режиссер" << setw(30)<<team[0]->get_identity_data().get_FIO() << endl;
 	cout << "____________________________________________" << endl;
-	cout << setw(14) << "Ðåäàêòîð" << setw(30) << team[1]->get_identity_data().get_FIO() << endl;
+	cout << setw(14) << "Редактор" << setw(30) << team[1]->get_identity_data().get_FIO() << endl;
 	cout << "____________________________________________" << endl;
-	cout << setw(14) << "Âåäóùèé" << setw(30) << team[2]->get_identity_data().get_FIO() << endl;
+	cout << setw(14) << "Ведущий" << setw(30) << team[2]->get_identity_data().get_FIO() << endl;
 	cout << "____________________________________________" << endl;
-	cout << setw(14) << "Îïåðàòîð" << setw(30) << team[3]->get_identity_data().get_FIO() << endl;
+	cout << setw(14) << "Оператор" << setw(30) << team[3]->get_identity_data().get_FIO() << endl;
 	cout << "____________________________________________" << endl;
 }
