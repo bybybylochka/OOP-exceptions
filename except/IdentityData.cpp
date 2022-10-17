@@ -1,6 +1,6 @@
-#include "IdentityData.h"
+﻿#include "IdentityData.h"
 #include<iostream>
-#include"Employee.h"
+#include"Employees.h"
 using namespace std;
 
 IdentityData::IdentityData()
@@ -30,6 +30,12 @@ Gender IdentityData::get_gender()
 {
 	return this->gender;
 };
+string get_string_gender(Gender gender)
+{
+	if (gender == male)
+		return "М";
+	else return "Ж";
+}
 int IdentityData::get_age()
 {
 	return this->age;
@@ -45,7 +51,7 @@ void IdentityData::create_identity_data()
 }
 void IdentityData::print_identity_data()
 {
-	
+
 }
 string check_string()
 {
@@ -71,7 +77,7 @@ string check_string()
 		try {
 			if (flag == 1)
 				throw 1;
-			return FIO; 
+			return FIO;
 			break;
 		}
 		catch (int) {
@@ -100,4 +106,10 @@ int check_range(int bottom, int top)
 			cout << e.what() << endl;
 		}
 	}
+}
+
+void my_terminate()
+{
+	cout << "Отсутствует необходимый обработчик исключения! Программа аварийно завершена!" << endl;
+	exit(1);
 }

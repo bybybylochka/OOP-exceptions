@@ -1,6 +1,6 @@
 #include "IdentityData.h"
 #include<iostream>
-#include"Employee.h"
+#include"Employees.h"
 using namespace std;
 
 IdentityData::IdentityData()
@@ -30,22 +30,28 @@ Gender IdentityData::get_gender()
 {
 	return this->gender;
 };
+string get_string_gender(Gender gender)
+{
+	if (gender == male)
+		return "М";
+	else return "Ж";
+}
 int IdentityData::get_age()
 {
 	return this->age;
 };
 void IdentityData::create_identity_data()
 {
-	cout << "  Р’РІРµРґРёС‚Рµ С„Р°РјРёР»РёСЋ СЃРѕС‚СЂСѓРґРЅРёРєР°:  ";
+	cout << "  Введите фамилию сотрудника:  ";
 	set_FIO(check_string());
-	cout << "  РЈРєР°Р¶РёС‚Рµ РїРѕР» СЃРѕС‚СЂСѓРґРЅРёРєР°(0-РјСѓР¶СЃРєРѕР№, 1-Р¶РµРЅСЃРєРёР№):  ";
+	cout << "  Укажите пол сотрудника(0-мужской, 1-женский):  ";
 	check_range(0, 1) == 0 ? set_gender(male) : set_gender(female);
-	cout << "  Р’РІРµРґРёС‚Рµ РІРѕР·СЂР°СЃС‚ СЃРѕС‚СЂСѓРґРЅРёРєР°:  ";
+	cout << "  Введите возраст сотрудника:  ";
 	set_age(check_range(18, 60));
 }
 void IdentityData::print_identity_data()
 {
-	
+
 }
 string check_string()
 {
@@ -71,11 +77,11 @@ string check_string()
 		try {
 			if (flag == 1)
 				throw 1;
-			return FIO; 
+			return FIO;
 			break;
 		}
 		catch (int) {
-			cout << "  РћС€РёР±РєР° РІРІРѕРґР°! РџРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·:  ";
+			cout << "  Ошибка ввода! Попробуйте еще раз:  ";
 		}
 	}
 }
@@ -89,7 +95,7 @@ int check_range(int bottom, int top)
 		{
 			cin >> range;
 			if (cin.fail() || range<bottom || range>top)
-				throw index_out_of_range("РћС€РёР±РєР° РІРІРѕРґР°! РџРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·: ");
+				throw index_out_of_range("Ошибка ввода! Попробуйте еще раз: ");
 			cin.ignore(32767, '\n');
 			return range;
 		}
@@ -100,4 +106,10 @@ int check_range(int bottom, int top)
 			cout << e.what() << endl;
 		}
 	}
+}
+
+void my_terminate()
+{
+	cout << "Отсутствует необходимый обработчик исключения! Программа аварийно завершена!" << endl;
+	exit(1);
 }
